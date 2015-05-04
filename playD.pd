@@ -1,0 +1,108 @@
+#N canvas 131 68 942 699 10;
+#X obj 443 235 r D\$1;
+#X obj 27 195 soundfiler;
+#X floatatom 33 -9 5 0 0 0 - - -, f 5;
+#X obj 352 304 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 190 12 how to set the name of the array with the \$1 variable
+of the abstraction;
+#X text 597 171 The creation arguments (level \, liveness \, crossover
+frequency \, HF damping) may also be supplied in four inlets as shown.
+The "liveness" (actually the internal feedback percentage) should be
+100 for infinite reverb \, 90 for longish \, and 80 for short. The
+crossover frequency and HF damping work together: at frequencies above
+crossover \, the feedback is diminished by the "damping" as a percentage.
+So zero HF damping means equal reverb time at all frequencies \, and
+100% damping means almost nothing above the crossover frequency gets
+through.;
+#X text 490 95 1: output level \, dB \, 0-100;
+#X text 490 148 4: high frequency damping \, 0-100;
+#X text 491 131 3: crossover frequency in Hz. (3000 default);
+#X text 491 114 2: liveness \, 0-100 \, usually between 85 and 100
+;
+#X obj 31 56 makefilename /home/mick/LabIO/gits/pix_freenect/Numbered_sound_files/%d.wav
+;
+#X obj 33 -39 \$1;
+#X obj 35 -65 loadbang;
+#X floatatom 604 328 5 0 0 0 - - -, f 5;
+#X obj 348 255 metro 500;
+#X obj 338 218 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 330 190 r Go;
+#X obj 468 541 *~ 0.1;
+#X floatatom 409 194 5 0 0 0 - - -, f 5;
+#X obj 443 330 + 100;
+#X obj 443 290 * 100;
+#X obj 501 446 expr (10-$f1)/10;
+#X obj 499 470 lop~ 3;
+#X obj 475 512 *~;
+#X obj 509 377 sel 0;
+#X msg 460 431 0;
+#X obj 517 292 r TempoRange;
+#X obj 517 328 r Tempomin;
+#X obj 269 279 r GoOnce;
+#X obj 25 241 table s\$1-r;
+#X obj 26 277 table s\$1-l;
+#X obj 72 113 makefilename s%d-l;
+#X obj 195 116 makefilename s%d-r;
+#X obj 28 15 t f f f;
+#X obj 27 138 pack s s s;
+#X msg 28 166 read -resize \$1 \$2 \$3;
+#X obj 314 395 tabplay~ bogus;
+#X msg 285 348 set \$1;
+#X obj 204 400 tabplay~ bogus;
+#X msg 200 365 set \$1;
+#X obj 369 539 *~ 0.1;
+#X obj 376 510 *~;
+#X obj 470 577 throw~ som-r;
+#X obj 371 575 throw~ som-l;
+#X obj 91 -65 r reset;
+#X obj 353 455 delay~;
+#X obj 239 464 delay~;
+#X obj 466 263 t f f f;
+#X connect 0 0 47 0;
+#X connect 2 0 33 0;
+#X connect 3 0 36 0;
+#X connect 3 0 38 0;
+#X connect 10 0 34 0;
+#X connect 11 0 2 0;
+#X connect 12 0 11 0;
+#X connect 14 0 3 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X connect 17 0 42 0;
+#X connect 18 0 14 1;
+#X connect 19 0 14 1;
+#X connect 20 0 19 0;
+#X connect 21 0 22 0;
+#X connect 22 0 23 1;
+#X connect 22 0 41 1;
+#X connect 23 0 17 0;
+#X connect 24 0 25 0;
+#X connect 24 1 21 0;
+#X connect 25 0 22 0;
+#X connect 26 0 20 1;
+#X connect 27 0 19 1;
+#X connect 28 0 3 0;
+#X connect 31 0 34 1;
+#X connect 31 0 37 0;
+#X connect 32 0 34 2;
+#X connect 32 0 39 0;
+#X connect 33 0 10 0;
+#X connect 33 1 31 0;
+#X connect 33 2 32 0;
+#X connect 34 0 35 0;
+#X connect 35 0 1 0;
+#X connect 36 0 45 0;
+#X connect 37 0 36 0;
+#X connect 38 0 46 0;
+#X connect 39 0 38 0;
+#X connect 40 0 43 0;
+#X connect 41 0 40 0;
+#X connect 44 0 11 0;
+#X connect 45 0 23 0;
+#X connect 46 0 41 0;
+#X connect 47 0 20 0;
+#X connect 47 1 24 0;
+#X connect 47 2 45 1;
+#X connect 47 2 46 1;
