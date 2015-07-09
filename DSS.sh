@@ -2,6 +2,6 @@
 
 pd pd DepthSoundScape_sound.pd &
 
-pd -nrt -noaudio DepthSoundScape2.pd 
+pd -nrt -noaudio DepthSoundScape3.pd 
 
 end

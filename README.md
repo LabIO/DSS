@@ -2,5 +2,9 @@
 Depth Sonification
 
 Sonification of the image grabbed by a Kinect. The image is resized to a 13by7 grid. 
-So 91 samples are played, one for each pixel and their sound is controlled by Depth value.
+91 samples are played, one for each pixel and their sound is controlled by Depth value.
 This prototype is being programmed upon request of Giles Hamilton-Fletcher of the University of Sussex.
+
+# Requirements
+Pd 0.46.2
+pix_freenect
